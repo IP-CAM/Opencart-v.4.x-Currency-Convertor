@@ -8,6 +8,21 @@ namespace Opencart\Admin\Controller\Extension\Currency\Module;
  */
 class Currency extends \Opencart\System\Engine\Controller
 {
+
+    private string $separator;
+
+    /**
+     * @param $registry
+     * @throws \Exception
+     */
+    public function __construct($registry)
+    {
+        parent::__construct($registry);
+
+        $this->separator = version_compare(VERSION, '4.0.2.0', '>=') ? '.' : '|';
+
+    }
+
     /**
      * Index
      *
@@ -36,7 +51,7 @@ class Currency extends \Opencart\System\Engine\Controller
             'href' => $this->url->link('extension/currency/module/currency', 'user_token=' . $this->session->data['user_token'])
         ];
 
-        $data['save'] = $this->url->link('extension/currency/module/currency.save', 'user_token=' . $this->session->data['user_token']);
+        $data['save'] = $this->url->link('extension/currency/module/currency' . $this->separator . 'save', 'user_token=' . $this->session->data['user_token']);
         $data['back'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module');
 
         // Module Settings
