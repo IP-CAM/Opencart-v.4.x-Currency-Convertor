@@ -87,31 +87,7 @@ class Currency extends \Opencart\System\Engine\Controller
      */
     public function install(): void
     {
-        $this->load->model('setting/event');
-
-        //Event Admin order info
-        $event_currency = [
-            'code'        => 'currency_converter',
-            'description' => '',
-            'trigger'     => 'system/library/cart/currency/before',
-            'action'      => 'extension/currency/event/currency.format',
-            'status'      => 1,
-            'sort_order'  => 1
-        ];
-        $this->model_setting_event->addEvent($event_currency);
-
         @mail('info@opencartbulgaria.com', 'OpenCartBulgaria Currency 4 installed (v4.0.0)', HTTP_CATALOG . ' - ' . $this->config->get('config_name') . "\r\n" . 'version - ' . VERSION . "\r\n" . 'IP - ' . $this->request->server['REMOTE_ADDR'], 'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/plain; charset=UTF-8' . "\r\n" . 'From: ' . $this->config->get('config_owner') . ' <' . $this->config->get('config_email') . '>' . "\r\n");
-    }
-
-    /**
-     * Uninstall
-     *
-     * @return void
-     */
-    public function uninstall(): void
-    {
-        $this->load->model('setting/event');
-        $this->model_setting_event->deleteEventByCode('currency_converter');
     }
 
     /**
@@ -169,8 +145,8 @@ class Currency extends \Opencart\System\Engine\Controller
                 }
             }
         } else {
-            return "0.00";
+            return "0.0000";
         }
-        return "0.00";
+        return "0.0000";
     }
 }
