@@ -15,7 +15,6 @@ class Currency extends \Opencart\System\Engine\Controller
      */
     public function index(): void
     {
-
         $this->load->language('extension/currency/module/currency');
 
         $this->document->setTitle($this->language->get('heading_title'));
@@ -94,14 +93,14 @@ class Currency extends \Opencart\System\Engine\Controller
         $event_currency = [
             'code'        => 'currency_converter',
             'description' => '',
-            'trigger'     => 'admin/view/sale/order_info/after',
-            'action'      => 'extension/currency/module/currency.convert',
+            'trigger'     => 'system/library/cart/currency/before',
+            'action'      => 'extension/currency/event/currency.format',
             'status'      => 1,
             'sort_order'  => 1
         ];
         $this->model_setting_event->addEvent($event_currency);
 
-        @mail('info@opencartbulgaria.com', 'INV.BG 4 - Електронни фактури (v0.1)', HTTP_CATALOG . ' - ' . $this->config->get('config_name') . "\r\n" . 'version - ' . VERSION . "\r\n" . 'IP - ' . $this->request->server['REMOTE_ADDR'], 'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/plain; charset=UTF-8' . "\r\n" . 'From: ' . $this->config->get('config_owner') . ' <' . $this->config->get('config_email') . '>' . "\r\n");
+        @mail('info@opencartbulgaria.com', 'OpenCartBulgaria Currency 4 installed (v4.0.0)', HTTP_CATALOG . ' - ' . $this->config->get('config_name') . "\r\n" . 'version - ' . VERSION . "\r\n" . 'IP - ' . $this->request->server['REMOTE_ADDR'], 'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/plain; charset=UTF-8' . "\r\n" . 'From: ' . $this->config->get('config_owner') . ' <' . $this->config->get('config_email') . '>' . "\r\n");
     }
 
     /**
