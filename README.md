@@ -15,7 +15,7 @@
 1. Изтеглете последната версия на модула от [GitHub Releases](https://github.com/opencartbulgaria/OpenCartBulgaria-Currency-4/releases).
 2. Влезте в **административния панел** на OpenCart.
 3. Отидете в **Разширения** → **Инсталатор**.
-4. Качете `currency.ocmod.zip` файла на модула (направете архив currency `currency.ocmod.zip` с следните папки и файлове admin, install.json).
+4. Качете `currency.ocmod.zip` файла на модула (направете архив `currency.ocmod.zip` с следните папки и файлове admin, install.json).
 5. След успешното качване, отидете в **Разширения** → **Модули**.
 6. Намерете **OpenCartBulgaria Currency** и го инсталирайте.
 7. Качете `uploads/system/library/cart/currency.php` в `system/library/cart/currency.php`.
