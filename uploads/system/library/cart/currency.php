@@ -21,10 +21,6 @@ class Currency {
      */
     private object $config;
     /**
-     * @var object|mixed|null
-     */
-    private object $session;
-    /**
      * @var array
      */
     private array $currencies = [];
@@ -92,7 +88,7 @@ class Currency {
 
         if(!empty($this->config->get('module_currency_status'))
             && $this->config->get('module_currency_rate')
-            && $this->config->get('config_currency') == $this->session->data['currency']
+            && $this->config->get('config_currency') == $currency
         ) {
             $euro_amount = $amount / $this->config->get('module_currency_rate');
             $string .= " (" . number_format($euro_amount, (int)$decimal_place, $this->language->get('decimal_point'), $this->language->get('thousand_point')) . "€)";
